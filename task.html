@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding-top:280px;
+            padding-left:280px;
+            color: rgb(252, 252, 252);
+            background-color:rgba(0, 0, 0, 0.878)
+        }
+        header{
+            display: flex;
+        }
+        h3{
+            width: 40%;
+            text-align: center;
+            
+        }
+        div{
+            text-align: center;
+            padding: 50px;
+            height:200px;
+            width:200px;
+            border-radius: 70%;
+        }
+        select,input{
+            border-radius: 5px;
+            width: 120px;
+            margin: 15px;
+            padding: 10px;
+            text-align: center;
+            font-size: large;
+            position: relative;
+            top: -100px;
+            left: 320px;
+        }
+        input:hover, select:hover{
+            cursor:pointer;
+            width: 140px;
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+    <div  class="change">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, dolorum. Ducimus, repudiandae ex! Repudiandae reiciendis libero atque in doloribus quod sunt, officiis, aliquam totam consequuntur tempora, distinctio magnam architecto omnis.
+</div>
+<h3 >Lorem ipsum, dolor sit amet <span class="change">consectetur</span> adipisicing elit
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, velit saepe. Eos minus facere esse beatae mollitia voluptate odio totam aspernatur .
+</h3>
+</header>
+    <select name="colors" id="colors" >
+        <option value="cadetblue" selected>cadetblue</option>
+        <option  value="steelblue">steelblue</option>
+        <option value="palevioletred">palevioletred</option>
+        <option value="darkseagreen">darkseagreen</option>
+        <option value="slateblue">slateblue</option>
+        <option value="orange">orange</option>
+    </select>
+    <input id="btn"type="submit" value="change">
+    <script>
+        let select = document.getElementById("colors")
+        let submit = document.getElementById("btn");
+        let divs = document.querySelectorAll(".change");
+        let lastColor = localStorage.getItem("currentColor");
+        divs.forEach(div => {
+            div.style.backgroundColor = lastColor;
+});
+        submit.addEventListener("click",(e)=>{
+            let currentDivColor = select.value;
+             localStorage.setItem("currentColor" , currentDivColor);
+             divs.forEach(div => {
+            div.style.backgroundColor = currentDivColor;
+});
+             select.style.backgroundColor = currentDivColor;
+             submit.style.backgroundColor = currentDivColor;
+        })
+    </script>
+    
+</body>
+</html>
